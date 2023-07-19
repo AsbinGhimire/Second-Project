@@ -9,5 +9,5 @@ exports.blogUser = async (req,res)=> {
          subtitle: subtitle,
         description: description
        } );
-      res.redirect("/Blog");
+      res.redirect("/blogss");
  };

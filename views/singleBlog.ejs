@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Blog</title>
+<style>
+  .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .division {
+      background: linear-gradient(rgba(248, 236, 236, 0.3), rgba(139, 131, 131, 0.6)), url('https://images.pexels.com/photos/8960464/pexels-photo-8960464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      width: calc(37%);
+      height: 250px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #c2bfbf;
+      border-radius: 5px;
+      background-color: #f0eded;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin: 100px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+ .back-btn{
+  display: inline-block;
+  margin-left: 15px;
+  padding: 10px 40px;
+  background-color: #0d6cd2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.back-btn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+.remove-btn{
+  display: inline-block;
+  margin: 30px 10px;
+  padding: 10px 30px;
+  background-color: #0d6cd2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+
+}
+.remove-btn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 25px;
+}
+
+p {
+  font-size: 15px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="division">
+      
+            <h2>Title: <%- blog[0].title %></h2>
+            <h3>Subtitle: <%- blog[0].subtitle %></h3>
+            <p>Description: <%- blog[0].description %></p>
+            <a href="/blogss" class="back-btn" >Back</a>
+            <a href="/delete/<%- blog[0].id %>"class="remove-btn">Remove</a>
+        </div>
+      </div>
+</body>
+</html>

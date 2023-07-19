@@ -2,7 +2,7 @@ const express = require ('express');
 const app = express();
 
 const ejs = require("ejs");
-const { sequelize } = require("./model/");
+const { sequelize, Blog } = require("./model/");
 const { blogUser } = require('./controller/blogController');
 
 // import ejs
@@ -21,10 +21,42 @@ app.get("/",(req,res)=>{
 app.get("/blog",(req,res)=>{
     res.render("blog")
 })
+app.get("/blogss",async(req,res)=>{
+    const blogs = await Blog.findAll()
+    res.render('blogPost',{blogs})
+    // res.render("blogPost")
+})
+
+
+// for displaying singleBlog
+app.get('/blogs/:id',async(req,res)=>{
+const blog = await Blog.findAll({
+    where:{
+        id:req.params.id
+          }
+        });
+        console.log(blog)
+    res.render('singleBlog',{blog})
+});
+
+// for removing a blog
+app.get('/delete/:id',async(req,res)=>{
+    await Blog.destroy({
+        where:{
+            id:req.params.id
+              }
+            });
+        res.redirect('/blogss')
+    });
+
+
+
 
 app.post("/blog",blogUser);
 
+
+
 // server start
-app.listen(4000, ()=>{
+app.listen(3000, ()=>{
     console.log("Successfully! server has started on port no: 4000");
-})
+});
