@@ -6,6 +6,7 @@
     <title>Single Blog</title>
 <style>
   .container {
+    /* width: min(100%,950px);c */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -74,6 +75,7 @@ p {
             <h3>Subtitle: <%- blog[0].subtitle %></h3>
             <p>Description: <%- blog[0].description %></p>
             <a href="/blogss" class="back-btn" >Back</a>
+            <a href="/update/<%-blog[0].id %>" class="back-btn" >Edit</a>
             <a href="/delete/<%- blog[0].id %>"class="remove-btn">Remove</a>
         </div>
       </div>

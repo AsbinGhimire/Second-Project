@@ -17,9 +17,13 @@ app.get("/",(req,res)=>{
     res.send("hello its me asbin ghimire from hunuhunxa degital !!")
 });
 
-// rendering blog.ejs page
+// rendering blogForm.ejs page
 app.get("/blog",(req,res)=>{
-    res.render("blog")
+    res.render("blogForm")
+})
+// rendering blogEdit.ejs page
+app.get("/blogs",(req,res)=>{
+    res.render("blogEdit")
 })
 app.get("/blogss",async(req,res)=>{
     const blogs = await Blog.findAll()
@@ -49,6 +53,28 @@ app.get('/delete/:id',async(req,res)=>{
         res.redirect('/blogss')
     });
 
+
+
+// Update blog data and redirect to the blog list page
+app.get('/update/:id', async(req,res) => {
+      
+    const edit= await Blog.findAll({
+       where:{
+          id: req.params.id
+       } 
+    });
+    console.log(edit)
+    res.render('blogEdit',{edit})
+ });
+
+ app.post('/update/:id', async(req,res) => {
+    const update1 = await Blog.update(req.body,{
+       where:{
+          id:req.params.id
+       }
+    })
+    res.redirect('/blogs/' + req.params.id)
+ });
 
 
 
